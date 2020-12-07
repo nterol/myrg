@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "oclif",
+    "oclif-typescript"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "semi":"off",
+    "array-bracket-spacing": "off",
+    "object-curly-spacing": "off",
+    "no-await-in-loop":"warn"
+  }
+}
