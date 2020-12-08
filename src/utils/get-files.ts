@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import avoidFolders from '../constants/avoid-folders'
 import checkParsability from './check-parsability';
 
-async function getFiles(path = './') {
+async function getFiles(path = './'): Promise<({name: string; path: string; lastChecked: number} | undefined)[]> {
   const entries = await fs.readdir(path, { withFileTypes: true });
 
   const files = entries.filter(file => !file.isDirectory()).map(file => {
