@@ -1,5 +1,5 @@
 import {Command, flags} from '@oclif/command'
-import serve from './app/serve';
+// import serve from './app/serve';
 import getFiles from './utils/get-files';
 import getImportsInFile from './utils/get-imports-in-file';
 
@@ -21,16 +21,19 @@ class Myrg extends Command {
   async run() {
     // const {args, flags} = this.parse(Myrg);
 
-    const ff = await getFiles();
+          const ff = await getFiles();
 
-    const aImports = ff.map(file => {
+
+
+    const aImports = await Promise.all(ff.map( file => {
       if (file) {
         const {path, name} = file;
         return getImportsInFile({name, path})
       }
       return {}
-    });
-    console.log(aImports);
+    }));
+
+    console.log(JSON.stringify(aImports))
     // serve(ff);
 
     // const name = flags.name ?? 'world'
